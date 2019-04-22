@@ -1,0 +1,14 @@
+{
+    "keep": {
+        "days": false,
+        "amount": 25
+    },
+    "auditLog": "/Users/ABUNAI/Documents/Development/easy-charts/log/.bae24a7d14803b69222b56fe8089710fbf2379b3-audit.json",
+    "files": [
+        {
+            "date": 1555710676546,
+            "name": "/Users/ABUNAI/Documents/Development/easy-charts/log/app.log..Fr-04-yyyy",
+            "hash": "fb837910433321f7095b31c840dac8f8"
+        }
+    ]
+}

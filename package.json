@@ -24,14 +24,19 @@
   "homepage": "https://github.com/JeffBaucom/easy-charts#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
     "express": "^4.16.4",
-    "mongoose": "^5.4.1",
+    "mongoose": "^5.5.2",
     "morgan": "^1.9.1",
-    "npm": "^6.5.0"
+    "npm": "^6.5.0",
+    "passport": "^0.4.0",
+    "winston": "^3.2.1",
+    "winston-daily-rotate-file": "^3.8.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
+    "babel-eslint": "9.0.0",
     "babel-plugin-inline-import": "^3.0.0",
     "babel-plugin-transform-async-to-module-method": "^6.24.1",
     "babel-plugin-transform-runtime": "^6.23.0",
@@ -47,6 +52,9 @@
   },
   "eslintConfig": {
     "parser": "babel-eslint",
+    "parserOptions": {
+      "ecmaVersion": 6
+    },
     "extends": [
       "airbnb/base",
       "plugin:import/errors"
@@ -58,6 +66,7 @@
       "no-console": 0
     },
     "env": {
+      "es6": true,
       "mocha": true
     }
   }
