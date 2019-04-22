@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import * as path from 'path';
 import cors from 'cors';
 import morgan from 'morgan';
+import passport from 'passport';
 import connectToDb from './db/connect';
 import logger from './core/logger/app-logger';
 import config from './core/config/config.dev'
@@ -19,6 +20,7 @@ logger.stream = {
 connectToDb();
 let app = express();
 
+app.use(passport.session());
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
