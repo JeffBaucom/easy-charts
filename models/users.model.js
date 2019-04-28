@@ -1,7 +1,8 @@
 import mongoose from 'mongoose';
 
 const UserSchema = mongoose.Schema({
-    name: {type: String, required: true, unique: true, index: true}
+    username: {type: String, required: true, unique: true, index: true},
+    password: {type: String, required: true}
 }, {collection : 'User'});
 
 let UsersModel = mongoose.model('User', UserSchema);
@@ -15,7 +16,7 @@ UsersModel.addUser = (userToAdd) => {
 }
 
 UsersModel.removeUser = (userName) => {
-    return UsersModel.remove({name: userName});
+    return UsersModel.remove({userName: userName});
 }
 
 export default UsersModel;

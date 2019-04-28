@@ -10,7 +10,6 @@ const connectToDb = async () => {
     let dbName = config.dbName;
     let dbUser = config.dbName;
     let dbPass = config.dbName;
-    console.log(config);
     try {
         // await Mongoose.connect(`mongodb://${dbUser}:${dbPass}@${dbHost}:${dbPort}/${dbName}`, { useNewUrlParser: true });
         await Mongoose.connect(`mongodb://localhost:27017/easy-charts`, { useNewUrlParser: true });

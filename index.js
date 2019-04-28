@@ -8,6 +8,7 @@ import connectToDb from './db/connect';
 import logger from './core/logger/app-logger';
 import config from './core/config/config.dev'
 import charts from './routes/charts.route'
+import { auth } from './auth';
 
 
 const port = config.serverPort;
@@ -20,7 +21,9 @@ logger.stream = {
 connectToDb();
 let app = express();
 
-app.use(passport.session());
+auth(passport);
+app.use(passport.initialize());
+// app.use(passport.session());
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
