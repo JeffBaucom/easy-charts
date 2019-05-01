@@ -1,4 +1,5 @@
 import { OAuth2Strategy as GoogleStrategy } from 'passport-google-oauth';
+import config from './core/config/config.dev'
 
 export function auth(passport) {
   passport.serializeUser((user, done) => {
@@ -9,9 +10,9 @@ export function auth(passport) {
   });
 
   passport.use(new GoogleStrategy({
-    clientID: '',
-    clientSecret: '',
-    callbackURL: '',
+    clientID: config.googleID,
+    clientSecret: config.googleSecret,
+    callbackURL: 'http://localhost:8080/auth/google/callback',
   },
   (token, refreshToken, profile, done) => {
     return done(null, {

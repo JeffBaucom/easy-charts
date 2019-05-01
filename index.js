@@ -32,6 +32,17 @@ app.use(express.static('./client/build'));
 
 app.use('/charts', charts);
 
+app.use('/auth/google', passport.authenticate('google', {
+  scope: ['https://www.googleapis.com/auth/userinfo.profile'],
+}));
+
+app.use('/auth/google/callback',
+  passport.authenticate('google', {
+    failureRedirect: '/',
+  }),
+  (req, res) => {}
+);
+
 app.get('/test', (req, res) => res.send('test!'));
 
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, '/client/build', 'index.html'))
