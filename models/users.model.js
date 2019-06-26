@@ -1,8 +1,10 @@
 import mongoose from 'mongoose';
 
 const UserSchema = mongoose.Schema({
-    username: {type: String, required: true, unique: true, index: true},
-    password: {type: String, required: true}
+    email: {type: String, required: true, unique: true, index: true},
+    username: {type: String, required: true},
+    password: {type: String, required: false},
+    googleId: {type: String},
 }, {collection : 'User'});
 
 let UsersModel = mongoose.model('User', UserSchema);
@@ -15,8 +17,8 @@ UsersModel.addUser = (userToAdd) => {
     return userToAdd.save();
 }
 
-UsersModel.removeUser = (userName) => {
-    return UsersModel.remove({userName: userName});
+UsersModel.removeUser = (userId) => {
+    return UsersModel.remove({_id: userId});
 }
 
 export default UsersModel;

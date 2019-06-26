@@ -8,6 +8,7 @@ import connectToDb from './db/connect';
 import logger from './core/logger/app-logger';
 import config from './core/config/config.dev'
 import charts from './routes/charts.route'
+import users from './routes/users.route'
 import { auth } from './auth';
 
 
@@ -31,17 +32,18 @@ app.use(morgan('dev', { 'stream': logger.stream }));
 app.use(express.static('./client/build'));
 
 app.use('/charts', charts);
+app.use('/users', users);
 
 app.use('/auth/google', passport.authenticate('google', {
-  scope: ['https://www.googleapis.com/auth/userinfo.profile'],
+  scope: ['profile'],
 }));
 
-app.use('/auth/google/callback',
-  passport.authenticate('google', {
-    failureRedirect: '/',
-  }),
-  (req, res) => {}
-);
+// app.use('/auth/google/callback',
+//   passport.authenticate('google', {
+//     failureRedirect: '/',
+//   }),
+//   (req, res) => {}
+// );
 
 app.get('/test', (req, res) => res.send('test!'));
 
