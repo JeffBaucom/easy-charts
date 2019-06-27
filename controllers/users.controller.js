@@ -1,5 +1,6 @@
 import User from '../models/users.model';
 import logger from '../core/logger/app-logger';
+import passport from 'passport';
 import * as bcrypt from 'bcrypt';
 
 function userValidator(body) {
@@ -37,12 +38,14 @@ let controller = {
               email: user.email,
               username: user.username
             });
+          }, (err) => {
+            res.status(400).send(err);
           });
         });
       });
 
     } else {
-      res.status(400).send('Error: Passwords do not match');
+      res.status(400).send('Error: Invalid user data');
     }
   }
 }
