@@ -31,10 +31,10 @@ app.use(bodyParser.urlencoded({ extended: false}));
 app.use(morgan('dev', { 'stream': logger.stream }));
 app.use(express.static('./client/build'));
 
-app.use('/charts', charts);
-app.use('/users', users);
+app.use('/api/v1/charts', charts);
+app.use('/api/v1/users', users);
 
-app.use('/auth/google', passport.authenticate('google', {
+app.use('/api/v1/auth/google', passport.authenticate('google', {
   scope: ['profile'],
 }));
 
@@ -47,7 +47,6 @@ app.use('/auth/google', passport.authenticate('google', {
 
 app.get('/test', (req, res) => res.send('test!'));
 
-app.get('/', (req, res) => res.sendFile(path.join(__dirname, '/client/build', 'index.html'))
-);
+app.get('*', (req, res) => res.sendFile(path.join(__dirname, '/client/build', 'index.html')));
 app.listen(port,  () => console.log(`app listening on port ${port}`)
 );
