@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './index.scss';
 import App from './App';
+import {
+  BrowserRouter as Router,
+} from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+class Wrapper extends Component {
+  render() {
+    return (
+      <Router><App /></Router>
+    );
+  }
+}
+
+ReactDOM.render(
+<Wrapper />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
